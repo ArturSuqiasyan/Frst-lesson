@@ -21,13 +21,18 @@ export default function App() {
       temp[index].salary -= 50000;
     }
 
-    if (temp[index].salary <= 50000) {
-      temp[index].salary <= 50000;
+    if (temp[index].salary <= 49999) {
+      temp[index].salary = salary;
       alert(`${temp[index].name} ${temp[index].surname}-ի աշխատավարձը չի կարող լինել 50,000 դրամից փոքր`);
     }
+   
     
     setPeople(temp);
   };
+  const handleRemoveDelet = (id) =>{
+    let temp = people.filter(x => x.id !== id);
+    setPeople(temp);
+  }
 
   return (
     <>
@@ -38,6 +43,7 @@ export default function App() {
           <p>{item.name} {item.surname}</p>
           <strong>{item.salary} AMD</strong>
           <button onClick={() => handleSalaryDown(item.id)}>Reduce Salary</button>
+          <button onClick={() => handleRemoveDelet(item.id)}>Remove</button>
         </div>
       ))}
     </>
